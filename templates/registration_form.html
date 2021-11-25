@@ -1,0 +1,61 @@
+{% extends '1base.html' %}
+
+{% block title %}authorization{% endblock %}
+
+{% block content %}
+    <div class="main_block_elem">
+    <h3 style="text-align:center">Регистрация пользователя</h3>
+    {% for error in errors.values %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endfor %}
+
+        <form method="POST" class="form-horizontal">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="uname" class="col-sm-3 control-label">Логин:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="username" value="{{ username }}" id="uname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="psw" class="col-sm-3 control-label">Пароль:</label>
+                <div class="col-sm-9">
+                    <input type="password" name="password" id="psw">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="psw2" class="col-sm-3 control-label">Повторите ввод:</label>
+                <div class="col-sm-9">
+                    <input type="password" name="password2" id="psw2">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email:</label>
+                <div class="col-sm-9">
+                    <input type="email" name="email" value="{{ email }}" id="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ls" class="col-sm-3 control-label">Фамилия:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="last_name" value="{{ last_name }}" id="ls">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fs" class="col-sm-3 control-label">Имя:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="first_name" value="{{ first_name }}" id="fs">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <button type="submit" class="btn btn-default">Зарегистрировать</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

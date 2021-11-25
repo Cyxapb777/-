@@ -1,0 +1,26 @@
+{% extends '1base.html' %}
+
+{% block title %}Товары{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="page-header">
+                <h1>Заказы</h1>
+            </div>
+            <ul class="list-group">
+                {% for zakaz in zakaz_list %}
+                    <li>
+                        <div class="main_block_elem">
+                            <h4>{{ zakaz.name }}</h4>
+                            Описание: {{ zakaz.Usluga }}<br>
+
+                    </div>
+                    </li>
+                {% empty %}
+                    <li>пустой список</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

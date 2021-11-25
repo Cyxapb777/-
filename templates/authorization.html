@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}authorization{% endblock %}
+
+{% block content %}
+<div class="main_block_elem">
+<form method="POST" class="form-horizontal">
+    <h3 style="text-align:center">Авторизация пользователя</h3>
+    {% csrf_token %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger" role="alert">{{ field.errors }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}" class="col-sm-3 control-label">{{ field.label }}:</label>
+        <div class="col-sm-9">
+            {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock %}

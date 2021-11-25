@@ -1,0 +1,48 @@
+{% load static %}
+{% load el_pagination_tags %}
+
+{% paginate search %}
+{% for item in search %}
+    <section class="panel panel-search">
+{#        <div class="panel-heading bg-primary">#}
+            <div class="panel-title">
+                <h2>
+                    <div class="title">
+                        <a href="/item-{{ item.name }}">{{  item.name}}</a> <small> {{ item.type}}</small>
+                    </div>
+                </h2>
+            </div>
+{#        </div>#}
+        <div class="panel-body ">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{{ item.pic }}" width="90%"/>
+                </div>
+                <div class="col-lg-4">
+                    <h4>{{ item.description }}</h4>
+<h4>Have already bought such users as:</h4>
+                    {% for key, value in customers.items %}
+                        {% if key == item.name %}
+                            {% for v in value %}
+                                <h5>{{ v }}</h5>
+                            {% endfor %}
+                         {% endif %}
+                    {% endfor %}
+                    <h4>Available: </h4>
+                    <h4 id="available{{ item.name }}">{{ item.quantity }}</h4>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-2">
+                    <h4>Price: {{ item.price }}</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+{% empty %}
+    Finish
+{% endfor %}
+{% show_more %}

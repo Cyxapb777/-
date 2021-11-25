@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Add new{% endblock %}
+{% block styles %}
+{% comment %}<link href="../static/sign_in_style.css" rel="stylesheet">{% endcomment %}
+{% endblock %}
+{% block content %}
+    <div class="col-md-8">
+			<h3>Add new</h3>
+{{ error }}
+			<form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+				<div class="form-group">
+					<label for="exampleInputLogin1">Name</label>
+					<input type="text" name="name" class="form-control" id="exampleInputLogin1" placeholder="name">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Price</label>
+					<input type="text" name="price" class="form-control" id="exampleInput1" placeholder="price">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputNickName1">Type</label>
+					<select name = "type">
+  <option>Personal Computer</option>
+  <option>Monoblock</option>
+                        <option>Laptop</option>
+</select>
+{#                    <input type="text" name="type" class="form-control" id="exampleInputNickName1" placeholder="type">#}
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Quantity</label>
+					<input type="text" name="quantity" class="form-control" id="exampleInputPassword1" placeholder="quantity">
+				</div>
+                <div class="form-group">
+					<label for="exampleInputPassword1">Description</label>
+					<input type="text" name="description" class="form-control" id="exampleInputPassword21" placeholder="description">
+				</div>
+{#				<div class="form-group">#}
+{#					<label for="exampleInputRepeatPassword1">Repeat Password</label>#}
+{#					<input type="password" class="form-control" id="exampleInputRepeatPassword1" placeholder="Password">#}
+{#				</div>#}
+				<div class="form-group">
+                    <label for="exampleInputPassword1">Picture</label>
+					<input type="file" name="pic" id="exampleInputFile">
+				</div>
+				<button type="submit" class="btn btn-default">ADD</button>
+			</form>
+		</div>
+{% endblock %}
